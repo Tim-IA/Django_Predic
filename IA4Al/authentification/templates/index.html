@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Bienvenue {{ request.user.username }} !<br/>
+    Vous êtes connecté
+</h1>
+<a href="{% url 'deconnexion' %}">
+    <h1>Déconnexion</h1>
+</a>
+
+<a href="{% url 'suppression' %}">
+    <h1>Supprimer mon compte</h1>
+</a>
+</body>
+</html>
