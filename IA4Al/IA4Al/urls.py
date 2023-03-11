@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authentification.views import inscription, connexion, deconnexion, index
+from authentification.views import inscription, connexion, deconnexion, index, suppression
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('inscription/', inscription, name='inscription'),
-    path('connexion', connexion, name='connexion'),
-    path('deconnexion', connexion, name='deconnexion'),
+    path("admin/", admin.site.urls),
+    path("inscription", inscription, name="inscription"),
+    path("connexion", connexion, name="connexion"),
+    path("deconnexion", deconnexion, name="deconnexion"),
     path("index", index, name="index"),
-]
+    path("suppression/<int:id>", suppression, name="suppression"),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

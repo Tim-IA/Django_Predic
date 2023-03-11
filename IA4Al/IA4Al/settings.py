@@ -11,16 +11,19 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k%x09vm^-i61x0k-n(&$*yzd1$_$*om5ygmu_*q7zgrb(9f7p7'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -121,13 +124,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'fichiers')
+
+MEDIA_URL = '/fichiers/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL='authentification.User'
+AUTH_USER_MODEL='authentification.Utilisateur'
 
 LOGIN_URL = 'connexion'
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000',
-                        'https://8000-timia-djangopredic-ypyvxjkc3k3.ws-eu89.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
